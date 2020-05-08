@@ -1,9 +1,17 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,TextAreaField,SubmitField
-from wtforms.validators import Required
+from wtforms import StringField, TextAreaField, SubmitField, RadioField
+from wtforms.validators import DataRequired
 
-class ReviewForm(FlaskForm):
-
-    title = StringField('Review title',validators=[Required()])
-    review = TextAreaField('Movie review', validators=[Required()])
+class Pitch_Form(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    author = StringField('Author', validators=[DataRequired()])
+    content = TextAreaField('Note Pitch', validators=[DataRequired()])  
+    category = RadioField('Pick Category', choices=[('Pickup Lines', 'Pickup Lines'), ('Interview Pitch', 'Interview Pitch'), ('Life Struggles', 'Life Struggles'), ('Programming Pitch', 'Programming Pitch')], validators=[DataRequired()])  
     submit = SubmitField('Submit')
+
+class Update_Profile(FlaskForm):
+    bio = TextAreaField('Add something about Yourself...', validators = [DataRequired()])
+    submit = SubmitField('Submit')
+class CommentsForm(FlaskForm):
+   comment = TextAreaField('comment on the post',validators=[DataRequired()])
+   submit = SubmitField('Add Comment')

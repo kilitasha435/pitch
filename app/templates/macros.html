@@ -1,32 +1,47 @@
-<!-- Displaying movie list macro  -->
-{% macro displayMovieList(movie_list) %}
+{% macro showPitch(pitches) %} 
+   {% for pitch in pitches %}
 
-    {% for movie in movie_list %}
-        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
-            <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
-            <li class="text-center">
-                <a href="/movie/{{movie.id}}">
-                    {{ movie.title|truncate(10)}}</a>
-            </li>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            
+        <div class="card mt-5">
+            <div class="card-header" >
+                <b>{{pitch.category}}</b>
+            </div>
+            <div class="car-body">
+                
+                <p class="card-text">
+                    <i><strong>{{pitch.title}}</strong></i><br>
+                    <i>{{pitch.content}}</i><br>
+                    
+                    
+                </p>
+
+                <div>
+                    
+                    
+                    <a  href="{{url_for('main.comment',pitch_id=pitch.id)}}">Comment</a>&ensp;
+                </div>
+
+                
+
+            </div>
+            
+                <li class="list-group-item">  <strong>Pitched by:</strong> {{pitch.author}}&nbsp;&nbsp;  <strong>on:</strong> <small>{{pitch.date_posted.strftime('%d-%m-%Y %H:%M')}}</small></li>
+                <li class="list-group-item"> <a  href="">Vote Up </a>&ensp;
+                    <a  href="">Vote Down </a>&ensp; </li>
+               
+               
+            </ul>
         </div>
 
-    {% endfor %}
-
-{% endmacro %}
-
-<!-- Displaying reviews macro -->
-{% macro displayReviews(review_list) %}
-
-    {% for review in review_list %}
-
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
-        <h2> {{ review.title}} </h2>
-        <p> {{ review.review | truncate(30) }}</p>
-
-
-
+        </div>
 
     </div>
-    {% endfor %}
+</div>
 
-{% endmacro %}
+{% endfor %} 
+{% endmacro %} 
