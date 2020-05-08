@@ -4,7 +4,6 @@ class Config:
     '''
     Parent configuration class
     '''
-    debug = True
     SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://kevin:kilitasha@123@localhost/pitch"
 
