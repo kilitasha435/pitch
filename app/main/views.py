@@ -62,7 +62,7 @@ def new_pitch():
     
     return render_template('new_pitch.html', pitch_form = form)  
 
-@main.route('/<username>')
+@main.route('/<string:username>')
 @login_required
 def profile(username):
     pitch = Pitch.query.filter_by(user_id= current_user.id).all()
@@ -72,7 +72,7 @@ def profile(username):
    
     return render_template('profile.html', user = user, pitch = pitch)
     
-@main.route('/<username>/update/pic', methods = ['POST'])
+@main.route('/<string:username>/update/pic', methods = ['POST'])
 @login_required
 def update_profile_pic(username):
     user = User.query.filter_by(username = username).first()
@@ -85,7 +85,7 @@ def update_profile_pic(username):
 
     return redirect(url_for('main.profile', username = username))
 
-@main.route('/user/<username>/update',methods = ['GET','POST'])
+@main.route('/user/<string:username>/update',methods = ['GET','POST'])
 @login_required
 def update_profile(username):
     user = User.query.filter_by(username = username).first()
