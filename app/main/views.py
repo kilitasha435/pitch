@@ -2,6 +2,7 @@ from flask import render_template,request,redirect,url_for
 from . import main
 from ..request import get_movies,get_movie,search_movie
 from .forms import ReviewForm
+from flask_login import login_required
 from ..models import Review
 
 
